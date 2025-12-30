@@ -1,46 +1,48 @@
 Pneumonia Detection from Chest X Rays
 
-A clean, research oriented deep learning project for detecting pneumonia from chest X ray images. This repository is meant to be built on, not just read. If you are interested in medical AI, model reliability, or deployment, this is a good place to contribute.
+An open, research oriented deep learning project for medical imaging. Built to be extended, improved, and challenged.
 
-The model uses transfer learning with ResNet50 and focuses on more than just accuracy. It includes uncertainty estimation, explainability tools, and decision threshold analysis, which are all important in real medical settings.
+This repository focuses on detecting pneumonia from chest X ray images using modern deep learning techniques. It is not just about training a CNN and reporting accuracy. The emphasis is on reliability, interpretability, and real world usability.
+
+If you are interested in medical AI, uncertainty aware models, or deployable ML systems, this project is meant for you.
+
+Why This Project Matters
+
+Most pneumonia detection projects stop at classification performance. This one asks deeper questions:
+
+How confident is the model in each prediction
+
+What regions of the X ray influenced the decision
+
+How should decision thresholds change in clinical settings
+
+How does performance change under dataset shift
+
+The goal is to provide a strong foundation for meaningful experimentation, collaboration, and real improvement.
 
 What This Project Does
 
 Classifies chest X ray images as NORMAL or PNEUMONIA
 
-Trains using transfer learning with ResNet50
+Uses transfer learning with a ResNet50 backbone
 
-Evaluates using AUC, precision, recall, F1 score, and confusion matrices
+Evaluates performance using AUC, precision, recall, F1 score, and confusion matrices
 
-Generates Grad CAM heatmaps to show what the model is focusing on
+Generates Grad CAM heatmaps for model explainability
 
 Estimates prediction uncertainty using Monte Carlo Dropout
 
-Optimizes decision thresholds instead of using a fixed 0.5 cutoff
+Optimizes decision thresholds instead of relying on a fixed 0.5 cutoff
 
-Supports experiments, evaluation, and deployment from one script
+Supports training, evaluation, experiments, and deployment from a single script
 
-This is designed to be readable, modular, and easy to extend.
-
-Why This Repo Exists
-
-Most pneumonia detection projects stop at training a CNN and reporting accuracy. This one tries to answer harder questions:
-
-How confident is the model in its predictions
-
-What parts of the image influenced the decision
-
-How should thresholds change in a clinical setting
-
-How does performance change under dataset shifts
-
-The goal is to make this a strong base for experimentation, research, and real improvements.
+Designed to be clean, modular, and easy to extend.
 
 Getting Started
 Train the model
 python pneumoniadetection.py --mode train --num_epochs 50
 
-Evaluate with uncertainty
+Evaluate with uncertainty estimation
 python pneumoniadetection.py --mode evaluate --use_mc_dropout
 
 Run structured experiments
@@ -64,32 +66,32 @@ DL-Pneumonia-Detection/
 
 Ways to Contribute
 
-Contributions are very welcome. Some good starting points:
+Contributions are strongly encouraged. Some ideas:
 
 Improve model performance or training stability
 
-Add new explainability or calibration methods
+Add new explainability or calibration techniques
 
-Test on new datasets or detect dataset shift
+Test on additional datasets or analyze dataset shift
 
-Clean up code structure or documentation
+Refactor or improve documentation
 
 Add multi class classification
 
-Improve the dashboard or API
+Extend the dashboard or API
 
-If you are unsure where to start, open an issue and describe what you want to work on.
+If you are not sure where to start, open an issue and describe what you want to work on.
 
 Who This Is For
 
-Students building serious ML or biomedical portfolios
+Students building strong ML or biomedical portfolios
 
-Researchers experimenting with medical imaging models
+Researchers exploring medical imaging models
 
 Developers interested in uncertainty aware AI
 
-Anyone who wants to contribute to an open, well structured ML project
+Contributors looking for a serious open source ML project
 
 Disclaimer
 
-This project is for research and educational use only. It is not a medical device and should not be used for clinical diagnosis.
+This project is for research and educational purposes only. It is not a medical device and must not be used for clinical diagnosis.
