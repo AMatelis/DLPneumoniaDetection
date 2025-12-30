@@ -1,69 +1,75 @@
 # Pneumonia Detection from Chest X Rays
 
-An open, research oriented deep learning project for medical imaging. Built to be extended, improved, and challenged.
+A research-oriented deep learning project for detecting pneumonia from chest X ray images. Built to be extended, improved, and collaborated on.
 
-This repository focuses on detecting pneumonia from chest X ray images using modern deep learning techniques. It is not just about training a CNN and reporting accuracy. The emphasis is on reliability, interpretability, and real world usability.
+This project goes beyond simple classification: it emphasizes model reliability, uncertainty estimation, explainability, and decision threshold optimization for real-world medical AI.
 
-If you are interested in medical AI, uncertainty aware models, or deployable ML systems, this project is meant for you.
+## Overview
 
-## Why This Project Matters
+• Classifies chest X ray images as NORMAL or PNEUMONIA
 
-Most pneumonia detection projects stop at classification performance. This one asks deeper questions:
+• Uses ResNet50 transfer learning with custom classification layers
 
-How confident is the model in each prediction
+• Evaluates with AUC, precision, recall, F1 score, and confusion matrices
 
-What regions of the X ray influenced the decision
+• Generates Grad CAM heatmaps for explainability
 
-How should decision thresholds change in clinical settings
+• Estimates prediction uncertainty using Monte Carlo Dropout
 
-How does performance change under dataset shift
+• Optimizes decision thresholds instead of relying on a fixed 0.5 cutoff
 
-The goal is to provide a strong foundation for meaningful experimentation, collaboration, and real improvement.
+• Supports training, evaluation, experiments, and deployment from a single script
 
-## What This Project Does
+## Installation
 
-Classifies chest X ray images as NORMAL or PNEUMONIA
+1. Clone the repository:
 
-Uses transfer learning with a ResNet50 backbone
+git clone https://github.com/yourusername/DL-Pneumonia-Detection.git
 
-Evaluates performance using AUC, precision, recall, F1 score, and confusion matrices
 
-Generates Grad CAM heatmaps for model explainability
+2. Install dependencies:
 
-Estimates prediction uncertainty using Monte Carlo Dropout
+pip install -r requirements.txt
 
-Optimizes decision thresholds instead of relying on a fixed 0.5 cutoff
 
-Supports training, evaluation, experiments, and deployment from a single script
+3. Make sure you have Python 3.10+ and TensorFlow/Keras installed.
 
-Designed to be clean, modular, and easy to extend.
+## Usage
 
-## Getting Started
-Train the model
+#### Train the model
+
 python pneumoniadetection.py --mode train --num_epochs 50
 
-Evaluate with uncertainty estimation
+
+#### Evaluate with uncertainty
+
 python pneumoniadetection.py --mode evaluate --use_mc_dropout
 
-Run structured experiments
+
+#### Run experiments
+
 python pneumoniadetection.py --mode experiment --config config.yaml
 
-Launch the API
+
+#### Launch API
+
 python pneumoniadetection.py --mode api
 
-Launch the dashboard
+
+#### Launch dashboard
+
 python pneumoniadetection.py --mode dashboard
 
 ## Project Structure
 DL-Pneumonia-Detection/
 
-├── data/   
+├── data/            # train, val, test image folders
 
-├── models/        
+├── models/          # saved models
 
-├── experiments/     
+├── experiments/     # logs, configs, reports
 
-├── outputs/         
+├── outputs/         # plots and analysis 
 
 ├── pneumoniadetection.py
 
@@ -71,34 +77,40 @@ DL-Pneumonia-Detection/
 
 └── requirements.txt
 
-## Ways to Contribute
+## Contributing
 
-Contributions are strongly encouraged. Some ideas:
+• We welcome contributions! Good starting points:
 
-Improve model performance or training stability
+• Improve model performance or training stability
 
-Add new explainability or calibration techniques
+• Add new explainability or calibration methods
 
-Test on additional datasets or analyze dataset shift
+• Test on new datasets or detect dataset shift
 
-Refactor or improve documentation
+• Refactor code or improve documentation
 
-Add multi class classification
+• Add multi-class classification
 
-Extend the dashboard or API
+• Improve the dashboard or API
 
-If you are not sure where to start, open an issue and describe what you want to work on.
+Please open an issue first to discuss your proposal before submitting a pull request.
 
-## Who This Is For
+## Support & Discussion
 
-Students building strong ML or biomedical portfolios
+• Open an issue for bugs
 
-Researchers exploring medical imaging models
+• Use GitHub Discussions for feature requests or ideas
 
-Developers interested in uncertainty aware AI
+## Who This Project Is For
 
-Contributors looking for a serious open source ML project
+• Students building ML or biomedical AI portfolios
+
+• Researchers exploring medical imaging
+
+• Developers interested in uncertainty-aware AI
+
+• Anyone looking for a modular, research-grade ML project
 
 ## Disclaimer
 
-This project is for research and educational purposes only. It is not a medical device and must not be used for clinical diagnosis.
+This project is for research and educational use only. It is not a medical device and must not be used for clinical diagnosis.
