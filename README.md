@@ -56,6 +56,7 @@ python pneumoniadetection.py --mode dashboard
 
 ## Project Structure
 DL-Pneumonia-Detection/
+
 ├── data/   
 
 ├── models/        
