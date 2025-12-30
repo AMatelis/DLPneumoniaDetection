@@ -56,12 +56,18 @@ python pneumoniadetection.py --mode dashboard
 
 ## Project Structure
 DL-Pneumonia-Detection/
-├── data/     # train, val, test image folders
-├── models/              # saved models
-├── experiments/         # logs, configs, reports
-├── outputs/             # plots and analysis
+├── data/   
+
+├── models/        
+
+├── experiments/     
+
+├── outputs/         
+
 ├── pneumoniadetection.py
+
 ├── config.yaml
+
 └── requirements.txt
 
 ## Ways to Contribute
