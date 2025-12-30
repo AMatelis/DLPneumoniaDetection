@@ -1,4 +1,4 @@
-Pneumonia Detection from Chest X Rays
+# Pneumonia Detection from Chest X Rays
 
 An open, research oriented deep learning project for medical imaging. Built to be extended, improved, and challenged.
 
@@ -6,7 +6,7 @@ This repository focuses on detecting pneumonia from chest X ray images using mod
 
 If you are interested in medical AI, uncertainty aware models, or deployable ML systems, this project is meant for you.
 
-Why This Project Matters
+## Why This Project Matters
 
 Most pneumonia detection projects stop at classification performance. This one asks deeper questions:
 
@@ -20,7 +20,7 @@ How does performance change under dataset shift
 
 The goal is to provide a strong foundation for meaningful experimentation, collaboration, and real improvement.
 
-What This Project Does
+## What This Project Does
 
 Classifies chest X ray images as NORMAL or PNEUMONIA
 
@@ -38,7 +38,7 @@ Supports training, evaluation, experiments, and deployment from a single script
 
 Designed to be clean, modular, and easy to extend.
 
-Getting Started
+## Getting Started
 Train the model
 python pneumoniadetection.py --mode train --num_epochs 50
 
@@ -54,7 +54,7 @@ python pneumoniadetection.py --mode api
 Launch the dashboard
 python pneumoniadetection.py --mode dashboard
 
-Project Structure
+## Project Structure
 DL-Pneumonia-Detection/
 ├── data/                # train, val, test image folders
 ├── models/              # saved models
@@ -64,7 +64,7 @@ DL-Pneumonia-Detection/
 ├── config.yaml
 └── requirements.txt
 
-Ways to Contribute
+## Ways to Contribute
 
 Contributions are strongly encouraged. Some ideas:
 
@@ -82,7 +82,7 @@ Extend the dashboard or API
 
 If you are not sure where to start, open an issue and describe what you want to work on.
 
-Who This Is For
+## Who This Is For
 
 Students building strong ML or biomedical portfolios
 
@@ -92,6 +92,6 @@ Developers interested in uncertainty aware AI
 
 Contributors looking for a serious open source ML project
 
-Disclaimer
+## Disclaimer
 
 This project is for research and educational purposes only. It is not a medical device and must not be used for clinical diagnosis.
