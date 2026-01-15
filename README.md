@@ -1,5 +1,4 @@
 # Pneumonia Detection from Chest X Rays
-# YOLO badge test
 
 A research-oriented deep learning project for detecting pneumonia from chest X ray images. Built to be extended, improved, and collaborated on.
 
