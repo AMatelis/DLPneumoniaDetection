@@ -267,6 +267,10 @@ Please open an issue to discuss substantial changes before submitting a pull req
 - Researchers investigating deep learning for medical imaging.
 - Developers studying uncertainty-aware machine learning.
 - Contributors interested in reproducible medical AI research.
+  
+## License
+
+This project’s original code is distributed under the MIT License. See the [LICENSE](LICENSE) file for details. Third-party datasets, images, and dependencies may be subject to separate terms.
 
 ## Acknowledgments
 
