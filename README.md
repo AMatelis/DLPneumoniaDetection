@@ -5,6 +5,8 @@ A research-oriented deep learning project for detecting pneumonia from chest X-r
 
 This project emphasizes model evaluation, uncertainty estimation, explainability, probability calibration, and decision-threshold optimization for medical imaging research.
 
+![Chest X-ray example](assets/chest-xray-example.png.jpeg)
+
 ## Overview
 
 - Classifies chest X-ray images as `NORMAL` or `PNEUMONIA`
@@ -92,11 +94,9 @@ Before publishing results, verify the dataset sources, licenses, sample counts, 
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/AMatelis/DLPneumoniaDetection.git
 cd DLPneumoniaDetection
 ```
-
-Replace `<YOUR_GITHUB_REPOSITORY_URL>` with your actual repository URL.
 
 ### 2. Install dependencies
 
@@ -148,6 +148,8 @@ Training and evaluation require the datasets to be available locally in the expe
 
 ```text
 DLPneumoniaDetection/
+├── assets/
+│   └── chest-xray-example.png.jpeg
 ├── configs/
 │   └── default.yaml
 ├── data/                     # Local datasets; excluded from Git
