@@ -1,116 +1,229 @@
-# Pneumonia Detection from Chest X Rays
 
-A research-oriented deep learning project for detecting pneumonia from chest X ray images. Built to be extended, improved, and collaborated on.
+# Pneumonia Detection from Chest X-Ray Images
 
-This project goes beyond simple classification: it emphasizes model reliability, uncertainty estimation, explainability, and decision threshold optimization for real-world medical AI.
+A research-oriented deep learning project for detecting pneumonia from chest X-ray images. Built to support extensibility, experimentation, and collaboration.
+
+This project emphasizes model evaluation, uncertainty estimation, explainability, probability calibration, and decision-threshold optimization for medical imaging research.
 
 ## Overview
 
-• Classifies chest X ray images as NORMAL or PNEUMONIA
+- Classifies chest X-ray images as `NORMAL` or `PNEUMONIA`
+- Uses ResNet50 transfer learning with custom classification layers
+- Evaluates performance using ROC-AUC, precision, recall, F1 score, and confusion matrices
+- Generates Grad-CAM heatmaps for model explainability
+- Estimates predictive uncertainty using Monte Carlo Dropout
+- Supports decision-threshold optimization beyond the default 0.5 cutoff
+- Includes probability calibration and dataset-shift analysis
+- Provides modular workflows for training, evaluation, experimentation, and visualization
 
-• Uses ResNet50 transfer learning with custom classification layers
+## Datasets
 
-• Evaluates with AUC, precision, recall, F1 score, and confusion matrices
+This project is configured to use two chest X-ray datasets.
 
-• Generates Grad CAM heatmaps for explainability
+### Dataset A: Chest X-Ray
 
-• Estimates prediction uncertainty using Monte Carlo Dropout
+- **Internal name:** `Archive/ChestXRay`
+- **Expected location:** `data/archive/chest_xray/`
+- **Purpose:** Primary chest X-ray dataset.
 
-• Optimizes decision thresholds instead of relying on a fixed 0.5 cutoff
+### Dataset B: Extra Dataset
 
-• Supports training, evaluation, experiments, and deployment from a single script
+- **Internal name:** `ExtraDataset`
+- **Expected location:** `data/extra_dataset/`
+- **Purpose:** Additional dataset for combined training and dataset-shift experiments.
+
+The original source URLs, dataset versions, and licenses have not yet been verified. These details should be documented once confirmed against the exact datasets used.
+
+### Class Labels
+
+The data pipeline expects two class labels:
+
+- `NORMAL`
+- `PNEUMONIA`
+
+### Local Directory Structure
+
+Keep the datasets on your local computer. They are not included in this GitHub repository.
+
+The expected directory structure is:
+
+```text
+data/
+├── archive/
+│   └── chest_xray/
+│       ├── train/
+│       │   ├── NORMAL/
+│       │   └── PNEUMONIA/
+│       ├── val/
+│       │   ├── NORMAL/
+│       │   └── PNEUMONIA/
+│       └── test/
+│           ├── NORMAL/
+│           └── PNEUMONIA/
+└── extra_dataset/
+    ├── train/
+    │   ├── NORMAL/
+    │   └── PNEUMONIA/
+    ├── val/
+    │   ├── NORMAL/
+    │   └── PNEUMONIA/
+    └── test/
+        ├── NORMAL/
+        └── PNEUMONIA/
+```
+
+Update `configs/default.yaml` if your local dataset paths differ from these defaults.
+
+### Data Processing
+
+The current data pipeline uses TensorFlow/Keras `ImageDataGenerator` to:
+
+- Resize images to 224 × 224 pixels
+- Rescale pixel values by `1/255`
+- Apply augmentation during training, including rotation, width and height shifts, shear, zoom, and horizontal flipping
+- Use rescaling without training augmentations for validation data
+
+The baseline pipeline is configured to combine the training directories and validation directories from both datasets. Dataset-shift experiments are intended to investigate model performance when training and evaluation data come from different datasets.
+
+Before publishing results, verify the dataset sources, licenses, sample counts, and split methodology. Ensure that evaluation uses an appropriate held-out test set.
 
 ## Installation
 
-1. Clone the repository:
+### 1. Clone the repository
 
-git clone https://github.com/yourusername/DL-Pneumonia-Detection.git
+```bash
+git clone <YOUR_GITHUB_REPOSITORY_URL>
+cd DLPneumoniaDetection
+```
 
+Replace `<YOUR_GITHUB_REPOSITORY_URL>` with your actual repository URL.
 
-2. Install dependencies:
+### 2. Install dependencies
 
-pip install -r requirements.txt
+```bash
+python -m pip install -r requirements.txt
+```
 
+Alternatively, install the project with its development dependencies using `pyproject.toml`:
 
-3. Make sure you have Python 3.10+ and TensorFlow/Keras installed.
+```bash
+python -m pip install -e ".[dev]"
+```
+
+### 3. Verify your environment
+
+Use Python 3.10 or later with a compatible TensorFlow version and the required dependencies.
 
 ## Usage
 
-#### Train the model
+The following commands are the intended entry points. Verify that the corresponding scripts exist and are configured before running them.
 
-python pneumoniadetection.py --mode train --num_epochs 50
+### Train the model
 
+```bash
+python scripts/train.py
+```
 
-#### Evaluate with uncertainty
+### Evaluate the model
 
-python pneumoniadetection.py --mode evaluate --use_mc_dropout
+```bash
+python scripts/evaluate.py
+```
 
+### Generate research figures
 
-#### Run experiments
+```bash
+python scripts/generate_figures.py
+```
 
-python pneumoniadetection.py --mode experiment --config config.yaml
+### Run the test suite
 
+```bash
+python -m pytest -v
+```
 
-#### Launch API
-
-python pneumoniadetection.py --mode api
-
-
-#### Launch dashboard
-
-python pneumoniadetection.py --mode dashboard
+Training and evaluation require the datasets to be available locally in the expected directory structure.
 
 ## Project Structure
-DL-Pneumonia-Detection/
 
-├── data/            # train, val, test image folders
+```text
+DLPneumoniaDetection/
+├── configs/
+│   └── default.yaml
+├── data/                     # Local datasets; excluded from Git
+├── models/                   # Local model files
+├── outputs/                  # Generated results and figures
+├── scripts/
+│   ├── train.py
+│   ├── evaluate.py
+│   └── generate_figures.py
+├── src/
+│   └── pneumonia/
+│       ├── __init__.py
+│       ├── config.py
+│       ├── data.py
+│       ├── model.py
+│       ├── training.py
+│       ├── evaluation.py
+│       ├── uncertainty.py
+│       ├── explainability.py
+│       ├── calibration.py
+│       ├── thresholds.py
+│       ├── dataset_shift.py
+│       ├── visualization.py
+│       ├── experiments.py
+│       ├── api.py
+│       ├── dashboard.py
+│       └── cli.py
+├── tests/
+├── pyproject.toml
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
 
-├── models/          # saved models
+## Research Capabilities
 
-├── experiments/     # logs, configs, reports
+- **Transfer learning:** Uses a pretrained ResNet50 backbone for binary image classification.
+- **Model evaluation:** Calculates classification metrics and generates evaluation plots.
+- **Explainability:** Uses Grad-CAM to visualize image regions that influence predictions.
+- **Uncertainty estimation:** Supports Monte Carlo Dropout for estimating predictive uncertainty.
+- **Threshold optimization:** Evaluates alternative classification thresholds.
+- **Probability calibration:** Provides tools to assess and calibrate predicted probabilities.
+- **Dataset-shift analysis:** Supports experiments comparing performance across datasets.
+- **Visualization:** Provides tools for generating research figures and summaries.
 
-├── outputs/         # plots and analysis 
-
-├── pneumoniadetection.py
-
-├── config.yaml
-
-└── requirements.txt
+Actual performance and conclusions must be established through reproducible experiments. These capabilities do not imply that the model is clinically validated.
 
 ## Contributing
 
-• We welcome contributions! Good starting points:
+Contributions that improve reliability, reproducibility, and maintainability are welcome.
 
-• Improve model performance or training stability
+Potential areas for contribution include:
 
-• Add new explainability or calibration methods
+- Improving model performance and training stability
+- Adding explainability or probability-calibration methods
+- Evaluating generalization across datasets
+- Investigating dataset shift
+- Refactoring code and improving documentation
+- Expanding automated test coverage
+- Improving API and dashboard functionality
 
-• Test on new datasets or detect dataset shift
+Please open an issue to discuss substantial changes before submitting a pull request.
 
-• Refactor code or improve documentation
+## Support and Discussion
 
-• Add multi-class classification
+- **Bug reports:** Open a GitHub issue.
+- **Feature requests:** Open an issue describing the proposed functionality.
+- **Discussion:** Use GitHub Discussions if enabled for the repository.
 
-• Improve the dashboard or API
+## Intended Audience
 
-Please open an issue first to discuss your proposal before submitting a pull request.
-
-## Support & Discussion
-
-• Open an issue for bugs
-
-• Use GitHub Discussions for feature requests or ideas
-
-## Who This Project Is For
-
-• Students building ML or biomedical AI portfolios
-
-• Researchers exploring medical imaging
-
-• Developers interested in uncertainty-aware AI
-
-• Anyone looking for a modular, research-grade ML project
+- Students exploring machine learning and biomedical engineering
+- Researchers investigating deep learning for medical imaging
+- Developers studying uncertainty-aware machine learning
+- Contributors interested in reproducible medical AI research
 
 ## Disclaimer
 
-This project is for research and educational use only. It is not a medical device and must not be used for clinical diagnosis.
+This project is intended for research and educational purposes only. It is not a validated medical device and must not be used for clinical diagnosis or treatment decisions.

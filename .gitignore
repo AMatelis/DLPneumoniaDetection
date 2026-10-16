@@ -1,0 +1,29 @@
+
+# Datasets
+data/
+*.zip
+
+# Trained models and checkpoints
+models/*
+!models/.gitkeep
+*.h5
+*.hdf5
+*.keras
+*.weights.h5
+
+# Generated outputs
+outputs/*
+!outputs/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments and secrets
+.venv/
+venv/
+.env

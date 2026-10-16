@@ -1,0 +1,74 @@
+
+experiment:
+  name: "PneumoniaDetection_Baseline"
+  version: "v1.0.0"
+  description: "Pneumonia detection from chest X-rays"
+
+reproducibility:
+  seed: 42
+
+training:
+  num_epochs: 50
+  batch_size: 32
+  learning_rate: 0.0001
+  optimizer: "Adam"
+  loss: "binary_crossentropy"
+  early_stopping_patience: 10
+  reduce_lr_patience: 5
+
+model:
+  architecture: "ResNet50"
+  pretrained_weights: "imagenet"
+  image_size: [224, 224]
+  model_path: "pneumonia_model.h5"
+
+data:
+  # Update these paths to match your local dataset folders.
+  dataset_a:
+    name: "Archive/ChestXRay"
+    train_dir: "data/archive/chest_xray/train"
+    val_dir: "data/archive/chest_xray/val"
+    test_dir: "data/archive/chest_xray/test"
+
+  dataset_b:
+    name: "ExtraDataset"
+    train_dir: "data/extra_dataset/train"
+    val_dir: "data/extra_dataset/val"
+    test_dir: "data/extra_dataset/test"
+
+  combine_datasets: true
+
+  augmentation:
+    rotation_range: 20
+    width_shift_range: 0.2
+    height_shift_range: 0.2
+    zoom_range: 0.2
+    shear_range: 0.2
+    horizontal_flip: true
+    fill_mode: "nearest"
+
+dataset_shift:
+  split_ratio: 0.1
+
+ablations:
+  use_mc_dropout: true
+  optimize_thresholds: true
+  calibrate: true
+  analyze_gradcam: true
+  use_class_weights: true
+
+evaluation:
+  mc_dropout_samples: 10
+  calibration_split: 0.5
+  threshold_bins: 100
+  reliability_bins: 10
+
+output:
+  save_predictions_csv: true
+  save_json_configs: true
+  create_plots: true
+  plot_dpi: 300
+  base_dir: "outputs"
+
+logging:
+  level: "INFO"
