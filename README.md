@@ -229,3 +229,8 @@ Please open an issue to discuss substantial changes before submitting a pull req
 ## Disclaimer
 
 This project is intended for research and educational purposes only. It is not a validated medical device and must not be used for clinical diagnosis or treatment decisions.
+
+## Acknowledgments
+
+I would like to thank Dr. Paul Yi, Associate Member of the Department of Radiology and Section Chief of Intelligent Imaging Informatics at St. Jude Children's Research Hospital, for his guidance and feedback on the project's methodology and radiology AI approaches. His input helped inform the development of this research project.
+
